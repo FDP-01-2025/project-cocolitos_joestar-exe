@@ -58,13 +58,13 @@ int main() {
         if (cadejo.vida > 0) {
             int danioCadejo = generarDanio(5, 15);
             jugador.vida -= danioCadejo;
-            cout << "🧟‍♂️ El Cadejo te atacó e hizo " << dañoCadejo << " de daño.\n";
+            cout << " El Cadejo te mordio!! y te hizo " << dañoCadejo << " de daño.\n";
         }
 
         if (tlaloc.vida > 0) {
             int danioTlaloc = generarDanio(8, 18);
             jugador.vida -= dañoTlaloc;
-            cout << " Tlaloc te lanzó un rayo y causó " << dañoTlaloc << " de daño.\n";
+            cout << " Tlaloc te lanzó pencaso y causó " << dañoTlaloc << " de daño.\n";
         }
     }
 
