@@ -13,7 +13,7 @@
 void pantallaSeleccion();
 
 //Mapa donde se encuentra el jugador
-void mapaVolcan();
+void mapaVolcanJuego();
 
 // Batalla contra el Cipitillo
 void batalla();

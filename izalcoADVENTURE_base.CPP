@@ -25,7 +25,7 @@ bool kolashanpan = true;
 // y maneja la lógica del juego.
 int main() {
     pantallaSeleccion();
-    mapaVolcan();
+    mapaVolcanJuego();
     batalla();
     
     return 0;
