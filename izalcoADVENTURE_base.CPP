@@ -18,11 +18,11 @@ bool choripanes = true;
 bool kolashanpan = true;
 
 //TODOS LOS PROTOTIPOS DE LAS FUNCIONES
-void mostrarTorogozASCII();
-void mostrarDragonASCII();
+void torogos_perpectiva_1();
+void Dragon_BATALLA();
 void pantallaSeleccion();
 void mapaVolcan();
-void batalla();
+void Dragon_BATALLA();
 
 // Función principal
 // Esta es la función que se ejecuta al iniciar el programa
@@ -32,7 +32,6 @@ int main() {
     pantallaSeleccion();
     mapaVolcan();
     batalla();
-
     
     return 0;
 }
