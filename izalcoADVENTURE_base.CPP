@@ -1,9 +1,9 @@
+#include "statementsALL.h"
 #include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
 #include <windows.h>
-#include "fun.h"
 using namespace std;
 
 // Variables globales
@@ -17,12 +17,7 @@ bool salvaCola = true;
 bool choripanes = true;
 bool kolashanpan = true;
 
-//TODOS LOS PROTOTIPOS DE LAS FUNCIONES
-void torogos_perpectiva_1();
-void Dragon_BATALLA();
-void pantallaSeleccion();
-void mapaVolcan();
-void Dragon_BATALLA();
+
 
 // Función principal
 // Esta es la función que se ejecuta al iniciar el programa
