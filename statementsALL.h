@@ -8,12 +8,14 @@
 #include <windows.h>
 #include <conio.h>
 
-
 // Pantalla de seleccion de pupusa
 void pantallaSeleccion();
 
-//Mapa donde se encuentra el jugador
+// Mapa donde se encuentra el jugador
 void mapaVolcanJuego();
+void Mapa_Laboratorio();
+    void interact_ConMondongo();
+    void elegirPokemon();
 
 // Batalla contra el Cipitillo
 void batalla();
@@ -22,14 +24,14 @@ void batalla();
 void torogos_perpectiva_1();
 void torogos_perpectiva_2();
 
-//Mostrar Garrobo en ASCII con sus dos perspectivas
+// Mostrar Garrobo en ASCII con sus dos perspectivas
 void Garrobo_perpectiva_1();
 void Garrobo_perpectiva_2();
 
-//Mostraar Cadejo en ASCII
+// Mostraar Cadejo en ASCII
 void cangrejo();
 
-//Mostrar Cadejo en ASCII con sus dos perspectivas
+// Mostrar Cadejo en ASCII con sus dos perspectivas
 void cadejo_perpectiva_1();
 void cadejo_perpectiva_2();
 
