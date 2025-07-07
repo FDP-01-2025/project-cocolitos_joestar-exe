@@ -1,9 +1,17 @@
 
+#include "game.h"
+#include "maps.h"
+#include "cuscamon.h"
+#include "object.h"
+#include "battle.h"
 #include "utilities.h"
 #include <iostream>
 #include <string>
 #include <windows.h>
+#include <ctime>
+#include "defs.h"
 using namespace std;
+
 
 // Variables que solo se usan en esta parte (externas si se usan fuera)
 extern string tipoPupusa, nombrePupusa;
