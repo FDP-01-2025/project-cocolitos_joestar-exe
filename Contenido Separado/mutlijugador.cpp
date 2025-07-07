@@ -118,3 +118,36 @@ void mostrarArte(const string& nombre, bool perspectiva) {
        @ @  @ @@               @ @  @@@       
             @@@                @@@
 )";
+} else {
+            cout << R"(%*=---:::.:. . .                  
+              --====..::#=:...::               
+            :=++==*#=::-:. ...-- +               
+   .:::...:+=++*-:::...                    
+=++==-=+##+++++++==-:::-::.:=                
+++=-+=+###*=++++++++==++-:=                    
+=+==++++++#+=+===++++++                        
+=++++++++++++++++======+                         
+++++=++=+                          
+***********###+=##*=+                          
+##########*#%%#    ***
+)";
+        }
+    }
+    cout << endl;
+}
+
+void mostrarMenuAtaques(const string& nombre) {
+    cout << "\n Elige tu ataque:\n";
+    cout << "1. Ataque rápido (10-20 daño)\n";
+    cout << "2. Ataque poderoso (15-25 daño)\n";
+}
+
+Personaje seleccionarPokemon(int jugadorN) {
+    int opcion;
+    cout << "Jugador " << jugadorN << ", ¡Elige tu Pokémon!\n";
+    cout << "1. garrobo\n";
+    cout << "2. torogoz\n";
+    cout << "3. cangrejo\n";
+    cout << "Selecciona (1-3): ";
+    cin >> opcion;
+
