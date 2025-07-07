@@ -150,4 +150,29 @@ Personaje seleccionarPokemon(int jugadorN) {
     cout << "3. cangrejo\n";
     cout << "Selecciona (1-3): ";
     cin >> opcion;
+if (opcion == 1) return {"garrobo", 100, 100};
+    if (opcion == 2) return {"torogoz", 110, 110};
+    return {"cangrejo", 120, 120};
+}
+
+void usarMochila(Personaje& jugador, Mochila& mochila) {
+    cout << "\n Mochila:\n";
+    cout << "1. Poción de vida (" << mochila.pociones << " disponibles)\n";
+    cout << "2. Cancelar\n";
+    cout << "¿Qué deseas usar? ";
+    int eleccion;
+    cin >> eleccion;
+
+    if (eleccion == 1 && mochila.pociones > 0) {
+        int curacion = 20;
+        jugador.vida += curacion;
+        if (jugador.vida > jugador.maxVida)
+            jugador.vida = jugador.maxVida;
+        mochila.pociones--;
+        cout << " Usaste una poción y recuperaste " << curacion << " de vida.\n";
+    }
+    else {
+        cout << " Acción cancelada o sin objetos disponibles.\n";
+    }
+}
 
