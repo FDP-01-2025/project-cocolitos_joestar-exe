@@ -10,38 +10,6 @@ bool habloConMondongo = false;
 bool eligioPokemon = false;
 string pokemonElegido;
 
-void interact_ConMondongo()
-{
-    system("cls");
-    cout << R"( 
-         
-                 *            *++++++++                    
-                  *            *+#+=+*++                   
-                   ++          ++===++**                   
-                    +++         +=+++*#                    
-                   ++*++    +-=**++*##==+                  
-                   **++==  ==-==**#*+++--=                 
-                    +=----=-=--+***+------+               
-                      +-------=+***+--=---=               
-                       +=--==-+****+=-==---+              
-                           +--=###*=---=---=              
-                           =--=**+*=--=---=               
-                           =--=++++=-==-==                
-                           ---++*++=-----=                
-                          +=--+++++=-----=                
-                          ===-+++++=--====                
-                          =---+++++=-----=                
-                             ++++++++++                   
-                             ++++*+++++                   
-                             ++++*+++++   
-                             
-            Bienvenido a El Salvador joven entrenador Soy el profesor Mondongo
-            ¡Tu aventura esta a punto de comenzar!
-    )" << "\n\n";
-    system("pause");
-    habloConMondongo = true;
-}
-
 void elegirPokemon()
 {
     if (!habloConMondongo)

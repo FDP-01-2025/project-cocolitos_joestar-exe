@@ -10,8 +10,9 @@
 #include <windows.h>
 #include <ctime>
 #include "defs.h"
-using namespace std;
+#include "statementsall.h"
 
+using namespace std;
 
 // Variables que solo se usan en esta parte (externas si se usan fuera)
 extern string tipoPupusa, nombrePupusa;
@@ -36,44 +37,29 @@ int menuPrincipal() {
  (_) _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _     (_)
  (_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_) 
 
-
-            @@@@@@                    
-      @@@@@%@@@##***%                  
-            -+***%%+*%                 
-           @@#*++*****%                
-           %*++**+++++*#               
-           @*+++***++++*@              
-            #+++++***+++*@             
-            @%#*+++++*#++*             
-              %*#*+++++***#            
-                @%#*+++===%            
-                   @*====%@@           
-                     @@@@@@@           
-                      +=#              
-                      *==              
-                      *==%             
-                      *==+             
-                      *==+@            
-                       @@%%@@@         
-                            @@               
-
      Bienvenido a Izalco Adventures
     )" << endl;
     setColor(7);
 
     cout << "\n1. Nueva partida";
     cout << "\n2. Cargar partida";
-    cout << "\n3. Salir\n";
+    cout << "\n3. Modo multijugador";
+    cout << "\n4. Salir\n";
+
     cout << "Selecciona una opción: ";
 
     int op = 0;
-    while (op < 1 || op > 3) {
+    while (op < 1 || op > 4)
+    {
         cin >> op;
-        if (op < 1 || op > 3) cout << "Opción no válida. Intenta de nuevo: ";
+        if (op < 1 || op > 4)
+            cout << "Opción no válida. Intenta de nuevo: ";
     }
+
     system("cls");
     return op;
 }
+
 void pantallaSeleccion() {
     system("cls");
     setColor(14);
@@ -120,7 +106,9 @@ void pantallaSeleccion() {
 
     animacionCarga();
 }
-/ ============ FLUJO PRINCIPAL DEL JUEGO ============
+
+
+// ============ FLUJO PRINCIPAL DEL JUEGO ============
 void iniciarJuego() {
     srand(time(0));
     bool salir = false;
@@ -210,20 +198,12 @@ void iniciarJuego() {
                 continue;
             }
         }
-        else if (op == 2)
-        { // Cargar partida
-            if (cargarPartida())
-            {
-                if (cargarPartida())
-                {
-                    if (enVolcan)
-                    {
-                        mapaVolcan();
-                    }
-                    else
-                    {
-                        mapaCiudad();
-                    }
+        else if (op == 2) { // Cargar partida
+            if (cargarPartida()) {
+                if (enVolcan) {
+                    mapaVolcan();
+                } else {
+                    mapaCiudad();
                 }
                 setColor(10); cout << "¡Partida cargada!\n"; setColor(7);
                 pausa();
@@ -292,15 +272,18 @@ void iniciarJuego() {
                         system("cls");
                     }
                 }
-            }
-            else
-            {
+            } else {
                 cout << "No hay partida guardada. Inicia una nueva.\n";
                 pausa();
                 continue;
             }
         }
-        else if (op == 3) { // Salir
+        else if (op == 3) { // ---- MODO MULTIJUGADOR
+            multiplayer();
+            system("cls");
+            continue;
+        }
+        else if (op == 4) { // Salir
             cout << "¡Hasta pronto!\n";
             salir = true;
         }

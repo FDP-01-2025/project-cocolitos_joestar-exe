@@ -1,5 +1,8 @@
 
+#include "game.h"
 #include <string>
+#include "statementsall.h"
+
 
 std::string tipoPupusa;
 std::string nombrePupusa;
@@ -16,7 +19,7 @@ int ciudad_px = 1, ciudad_py = 1;
 
 
 int main() {
+    iniciarJuego();
     return 0;
 }
-
 
