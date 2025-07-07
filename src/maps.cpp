@@ -12,7 +12,6 @@
 
 using namespace std;
 
-
 // ================== MAPA LABORATORIO ==================
 void mapaLaboratorio() {
     const int filas = 10;
@@ -110,7 +109,6 @@ void mapaLaboratorio() {
         }
     }
 }
-
 
 // ================== MAPA CIUDAD ==================
 void mapaCiudad() {
@@ -222,63 +220,107 @@ void mapaCiudad() {
     if (salirAlMenu) return;
 }
 
-// ================== MAPA VOLCÁN ==================
+// ================== MAPA VOLCÁN NUEVO ==================
 void mapaVolcan() {
-    const int H = 10, W = 21;
-    char mapa[H][W+1] = {
-        "        X         ",
-        "       ...        ",
-        "      .....       ",
-        "     .......      ",
-        "    .........     ",
-        "   ...........    ",
-        "  .............   ",
-        " ...............  ",
-        "..................",
-        ".......@.........."
-    };
-    int px = (enVolcan ? volcan_px : 7); // Usa la posición guardada si aplica
-    int py = (enVolcan ? volcan_py : 9);
-    enVolcan = false; // resetea el flag al entrar
-    bool subiendo = true;
-    bool encontroPok = false;
+    // === MAPA DE TU COMPAÑERA ===
+    const int altura = 15;
+    const int ancho = 2 * altura + 1;
+    char mapa[altura][ancho];
+
+    // Inicializar el mapa visual bonito
+    for (int i = 0; i < altura; i++) {
+        for (int j = 0; j < ancho; j++) {
+            if (j == altura - i || j == altura + i)
+                mapa[i][j] = '#';
+            else if (j > altura - i && j < altura + i) {
+                if (i % 3 == 0 && j % 2 == 0)
+                    mapa[i][j] = '~';
+                else
+                    mapa[i][j] = '.';
+            }
+            else
+                mapa[i][j] = ' ';
+        }
+    }
+    // Cima del volcán con humo y cráter
+    mapa[0][altura] = 'X'; // Cráter
+    mapa[1][altura - 1] = '^';
+    mapa[1][altura] = '^';
+    mapa[1][altura + 1] = '^'; // Humo
+
+    // Obstáculos
+    for (int i = 3; i < 6; i++) {
+        mapa[i][altura + 2] = 'O';
+        mapa[i][altura - 2] = 'O';
+    }
+
+    // === LÓGICA DEL JUGADOR ===
+    int px = (enVolcan ? volcan_px : altura); // Usa la posición guardada si aplica
+    int py = (enVolcan ? volcan_py : altura - 1);
+    enVolcan = false; // Resetea el flag al entrar
     extern bool salirAlMenu;
+    bool encontroPok = false; // Solo un encuentro aleatorio por subida
+    bool subiendo = true;
 
     while (subiendo && !salirAlMenu) {
         system("cls");
+        // == MENÚ SUPERIOR ==
         cout << "== Volcán Izalco ==   [I] Mochila   [P] Pokedex   [G] Guardar   [E] Exit\n";
-        for (int y=0; y<H; y++) {
-            for (int x=0; x<W; x++) {
-                if (y==py && x==px) setColor(14), cout << "@", setColor(7);
-                else cout << mapa[y][x];
+        cout << "Controles: W (arriba), S (abajo), A (izquierda), D (derecha)\n";
+        cout << "------------------------------------------\n";
+        cout << "Pasos desde la base: " << (altura - py) << " / " << altura << "\n";
+        cout << "------------------------------------------\n";
+
+        // Mostrar mapa y jugador
+        mapa[py][px] = '@';
+        for (int i = 0; i < altura; i++) {
+            cout << (altura - i) << "\t";
+            for (int j = 0; j < ancho; j++) {
+                if (mapa[i][j] == '@') { setColor(12); cout << '@'; setColor(7); }
+                else if (mapa[i][j] == 'X' || mapa[i][j] == '^') { setColor(6); cout << mapa[i][j]; setColor(7); }
+                else if (mapa[i][j] == 'O') { setColor(8); cout << mapa[i][j]; setColor(7); }
+                else if (mapa[i][j] == '#') { setColor(4); cout << mapa[i][j]; setColor(7); }
+                else cout << mapa[i][j];
             }
             cout << endl;
         }
-        // Encuentro con cuscamón salvaje aleatorio
-        if (!encontroPok && (py==4 && px>4 && px<15) && rand()%4==0) {
-            int cual = (rand()%2==0) ? 3 : 4;
-            string msg = (cual==4) ? "Uhhhh algo te está acechando uhhhh..." : "¡Un cuscamón salvaje ha aparecido!";
+        mapa[py][px] = '.'; // Restaurar el piso
+
+        // Mensajes contextuales
+        if (altura - py < 3)
+            cout << "\n¡Casi llegas! Se siente el calor del volcán...\n";
+        else if (altura - py < altura / 2)
+            cout << "\nVas a buena altura. ¡Sigue ascendiendo!\n";
+        else
+            cout << "\nEstás en la base del volcán. El camino es largo...\n";
+
+        // == ENCUENTRO ALEATORIO DE CUSCAMON ==
+        // Solo ocurre UNA VEZ en toda la subida (puedes cambiar condición para más)
+        if (!encontroPok && py <= altura / 2 && px > altura - 4 && px < altura + 4 && rand() % 4 == 0) {
+            int cual = (rand() % 2 == 0) ? 3 : 4; // 3: Cadejo/Cangrejo, 4: Tacuazín
+            string msg = (cual == 4) ? "Uhhhh algo te está acechando uhhhh..." : "¡Un cuscamón salvaje ha aparecido!";
             setColor(13); cout << "\n" << msg << "\n"; setColor(7); Sleep(1000);
-            batalla(cual,true,false);
+            batalla(cual, true, false); // ¡Usa tus funciones originales!
+            encontroPok = true;
         }
 
+        // == CONTROLES ==
         char t = tolower(_getch());
-        int nx=px, ny=py;
-        if (t=='w') ny--;
-        else if (t=='s') ny++;
-        else if (t=='a') nx--;
-        else if (t=='d') nx++;
-        else if (t=='i') { mochilaMenu(); continue; }
-        else if (t=='p') { pokedexMenu(); continue; }
-        else if (t=='g') {
+        int nx = px, ny = py;
+        if (t == 'w' && py > 0 && mapa[py - 1][px] != ' ') ny--;
+        else if (t == 's' && py < altura - 1 && mapa[py + 1][px] != ' ') ny++;
+        else if (t == 'a' && px > 0 && mapa[py][px - 1] != ' ') nx--;
+        else if (t == 'd' && px < ancho - 1 && mapa[py][px + 1] != ' ') nx++;
+        else if (t == 'i') { mochilaMenu(); continue; }
+        else if (t == 'p') { pokedexMenu(); continue; }
+        else if (t == 'g') {
             enVolcan = true;
             volcan_px = px;
             volcan_py = py;
             guardarPartida();
             continue;
         }
-
-        else if (t=='e') {
+        else if (t == 'e') {
             setColor(12);
             cout << "\n¿Seguro que quieres volver al menú principal? (Y/N): ";
             setColor(7);
@@ -299,42 +341,40 @@ void mapaVolcan() {
             if (salirAlMenu) break;
             continue;
         }
-        if (t == 'q') { salirAlMenu = true; break; }
+        else if (t == 'q') {
+            system("cls");
+            return;
+        }
 
-        // Limites
-        if (ny>=0 && ny<H && nx>=0 && nx<W && mapa[ny][nx]!=' ') { px=nx; py=ny; }
+        // Limites (se puede mover mientras sea piso)
+        if (mapa[ny][nx] != ' ') { px = nx; py = ny; }
+
         // Llega a la cima (boss)
-        if (py == 0 && px == 8)
-        {
+        if (py == 0 && px == altura) {
             setColor(12);
             cout << "\nEl Cipitillo te espera en la cima...\n";
-            setColor(7);
-            Sleep(1200);
+            setColor(7); Sleep(1200);
             setColor(14);
             cout << "¡Cipitillo ha sacado a Dragon Tlaloc!\n";
-            setColor(7);
-            Sleep(1000);
-            batalla(6, false, false); // pelea contra Tlaloc, el dragón boss
-            // Aquí viene el Quetzal solo si NO ha sido atrapado antes
-            if (!pokedex[5].atrapado)
-            {
+            setColor(7); Sleep(1000);
+            batalla(6, false, false); // Boss
+            if (!pokedex[5].atrapado) {
                 animacionCarga();
                 encuentroQuetzal();
-                // Cuando termina, regresarás a la ciudad dentro de encuentroQuetzal
-                return;
+                return; // Vuelve a ciudad después del Quetzal
             }
             subiendo = false;
         }
     }
 
     if (salirAlMenu) return;
-    // Después del volcán, aparecerá un Quetzal y ahí termina realmente el juego
+
+    // Después del volcán, vuelve a la ciudad
     if (!salirAlMenu) {
         animacionCarga();
         mapaCiudad();
     }
 }
-
 // ================== ENCUENTRO QUETZAL ==================
 int encuentroQuetzal() {
     setColor(14);
@@ -356,4 +396,3 @@ int encuentroQuetzal() {
     if (pokedex[5].atrapado) return 1;
     return 0;
 }
-
