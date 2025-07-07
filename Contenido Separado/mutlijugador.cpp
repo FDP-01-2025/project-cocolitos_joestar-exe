@@ -175,4 +175,24 @@ void usarMochila(Personaje& jugador, Mochila& mochila) {
         cout << " Acción cancelada o sin objetos disponibles.\n";
     }
 }
+void turnoJugador(Personaje& atacante, Personaje& defensor, Mochila& mochila, bool perspectiva) {
+    cout << "\nTurno de " << atacante.nombre << ":\n";
+    cout << "1. Atacar\n";
+    cout << "2. Usar Mochila\n";
+    cout << "Elige opción: ";
+    int opcion;
+    cin >> opcion;
+
+    if (opcion == 1) {
+        mostrarMenuAtaques(atacante.nombre);
+        int ataque;
+        cin >> ataque;
+
+        int danio = (ataque == 1) ? generarDanio(10, 20) : generarDanio(15, 25);
+
+        defensor.vida -= danio;
+        cout << "Le hiciste " << danio << " de daño a " << defensor.nombre << ".\n";
+
+        mostrarArte(atacante.nombre, perspectiva);
+    }
 
