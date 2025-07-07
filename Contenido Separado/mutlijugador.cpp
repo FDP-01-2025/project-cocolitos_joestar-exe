@@ -195,4 +195,44 @@ void turnoJugador(Personaje& atacante, Personaje& defensor, Mochila& mochila, bo
 
         mostrarArte(atacante.nombre, perspectiva);
     }
+else if (opcion == 2) {
+        usarMochila(atacante, mochila);
+    }
+}
 
+int main() {
+    srand(time(0));
+
+    Personaje jugador1 = seleccionarPokemon(1);
+    Personaje jugador2 = seleccionarPokemon(2);
+
+    Mochila mochila1 = {3};
+    Mochila mochila2 = {3};
+
+    cout << "\nJugador 1:";
+    mostrarArte(jugador1.nombre, true);
+    cout << "\nJugador 2:";
+    mostrarArte(jugador2.nombre, true);
+
+    bool turnoJ1 = true;
+
+    while (jugador1.vida > 0 && jugador2.vida > 0) {
+        mostrarEstado(jugador1, jugador2);
+
+        if (turnoJ1) {
+            turnoJugador(jugador1, jugador2, mochila1, true);
+        } else {
+            turnoJugador(jugador2, jugador1, mochila2, false);
+        }
+
+        turnoJ1 = !turnoJ1;
+    }
+
+    cout << "\n==== FIN DE LA BATALLA ====\n";
+    if (jugador1.vida <= 0)
+        cout << jugador2.nombre << " ha ganado la batalla.\n";
+    else
+        cout << jugador1.nombre << " ha ganado la batalla.\n";
+
+    return 0;
+}
