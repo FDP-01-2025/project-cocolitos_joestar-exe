@@ -66,3 +66,49 @@ int menuPrincipal() {
     system("cls");
     return op;
 }
+void pantallaSeleccion() {
+    system("cls");
+    setColor(14);
+    // ... (arte de pupusa y menú)
+        cout << R"(
+         ##*******##                         ##****#####
+        #****+*****##                      #**+++++++++++**##  
+    ##***################                 ##*++++++++++++++++*#
+   ##***##########*********##            #++++++++++***++++++*#
+  #********++++****++**####             #*+++*#+++**==+*++++++*#
+    /##*++++=++===++++==+*#            ##++#+==+++====+++++**+++*#
+   /#+++++++++=====+*++==*#           ##++*===+=============*++++*#
+  /#+=+++==+++====++++=+++##          #++*====()*=====*()====+*+++*#
+  *+++==++*()===+*#()+====+*         #++#==++++++*===+++++====*+++*#
+  #*+++====+++===+++=++++++*#         #+#==++======++===++====*+++*#
+  #*=++==+++++*****+=++++=+##        ##*+#====================+*+++# 
+ ####++++========++=====+++*###       ###++*===================**#++##
+ ## #*+++++=++=========+++*####        #+#**=================**++*+*#
+ %####+=++==+++===++++=+*###           ##+**+=============+*+**###
+  ####**+==+++++==+++*####             ####  #*++======+*   #####
+        #####*****####                ##       #########       ##
+         ###       ###                         ###   ##
+        ###         ###                      ###       ###
+    )" << endl;
+    setColor(7);
+    cout << "============== SELECCIONA TU PUPUSA ==============\n";
+    cout << "1. Pupusa de Maíz\n";
+    cout << "2. Pupusa de Arroz\n";
+    int op = 0;
+    while (op != 1 && op != 2) {
+        cout << "\nElige (1 o 2): ";
+        cin >> op;
+        if (op == 1) tipoPupusa = "Pupusa de Maiz";
+        else if (op == 2) tipoPupusa = "Pupusa de Arroz";
+        else cout << "Opción no válida. Intenta de nuevo.\n";
+    }
+
+    do {
+        cout << "\n¡Perfecto! Ahora nombra a tu pupusa (máx 12 caracteres, sin espacios): ";
+        cin >> nombrePupusa;
+        if (nombrePupusa.length() > 12)
+            cout << "El nombre es muy largo, intenta de nuevo.\n";
+    } while (nombrePupusa.empty() || nombrePupusa.length() > 12);
+
+    animacionCarga();
+}
