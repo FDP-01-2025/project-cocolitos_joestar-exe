@@ -67,18 +67,21 @@ void elegirPokemon()
         cin >> eleccion;
         if (eleccion == 1)
         {
+            torogos_perpectiva_2();
             cout << "\nHas elegido a Torogoz colorido. Un pajaro de fuego ancestral.\n";
             eligioPokemon = "CuscaTori";
             break;
         }
         else if (eleccion == 2)
         {
+            cangrejo();
             cout << "\nHas elegido al Cangrejo. Rapido y resistente.\n";
             eligioPokemon = "Cangrejo de La Libertad";
             break;
         }
         else if (eleccion == 3)
         {
+            Garrobo_perpectiva_2();
             cout << "\nHas elegido al Garrobo. ¡Cuidado que quema!\n";
             eligioPokemon = "Garrobo Caliente";
             break;
