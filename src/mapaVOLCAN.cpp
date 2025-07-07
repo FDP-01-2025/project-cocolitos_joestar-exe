@@ -1,7 +1,7 @@
 #include "statementsALL.h"
 #include <iostream>
-#include <iostream>
 #include <cstdlib>
+#include <ctime>
 #include <windows.h>
 #include <conio.h> // Para _getch() en Windows
 
