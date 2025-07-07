@@ -1,7 +1,7 @@
 
-#include "game.h"
+#include "src/game.h"
 #include <string>
-#include "statementsall.h"
+#include "src/statementsALL.h"
 
 
 std::string tipoPupusa;
@@ -10,7 +10,6 @@ bool salirAlMenu = false;
 bool vencioTlaloc = false;
 bool starterYaEscogido = false;
 bool vencioQuetzal = false;
-
 int volcan_px = 7; // Posición inicial estándar
 int volcan_py = 9;
 bool enVolcan = false;
