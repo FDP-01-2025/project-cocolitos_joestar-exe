@@ -112,3 +112,189 @@ void pantallaSeleccion() {
 
     animacionCarga();
 }
+/ ============ FLUJO PRINCIPAL DEL JUEGO ============
+void iniciarJuego() {
+    srand(time(0));
+    bool salir = false;
+    bool postGame = false;
+    bool quetzalPendiente = false;
+
+    while (!salir) {
+        // Reinicia datos al empezar cada nueva partida
+        inicializarDatos();
+        salirAlMenu = false;
+        vencioTlaloc = false;
+        starterYaEscogido = false;
+        postGame = false;
+        quetzalPendiente = false;
+
+        int op = menuPrincipal();
+
+        if (op == 1) { // Nueva partida
+            setColor(13);
+            cout << R"(
+        *            *++++++++                    
+         *            *+#+=+*++                   
+          ++          ++===++**                  
+           +++         +=+++*#                   
+          ++*++    +-=**++*##==+                
+          **++==  ==-==**#*+++--=               
+           +=----=-=--+***+------+              
+             +-------=+***+--=---=              
+              +=--==-+****+=-==---+             
+                  +--=###*=---=---=             
+                  =--=**+*=--=---=              
+                  =--=++++=-==-==               
+                  ---++*++=-----=               
+                 +=--+++++=-----=               
+                 ===-+++++=--====              
+                 =---+++++=-----=              
+                    ++++++++++                 
+                    ++++*+++++                 
+                    ++++*+++++   
+    )" << "\n";
+            cout << "Prof. Mondongo: ¡Bienvenido a El Salvador, este mundo maravilloso donde los Cuscamones y humanos conviven en un mismo vivir!\n";
+            setColor(7);
+            pausa();
+            system("cls");
+            pantallaSeleccion();
+            animacionCarga();
+
+            while (!postGame && !salirAlMenu) {
+                mapaCiudad();
+                if (salirAlMenu) break;
+                if (vencioTlaloc && !postGame) {
+                    quetzalPendiente = true;
+                    break;
+                }
+            }
+
+            if (salirAlMenu) continue;
+
+            // Postgame: Quetzal, y luego menú
+            if (quetzalPendiente) {
+                int resultadoQuetzal = encuentroQuetzal();
+                postGame = (resultadoQuetzal == 1);
+            }
+
+            while (postGame) {
+                setColor(10);
+                cout << "\n¡Felicidades! Terminaste la beta de Izalco Adventures.\n";
+                cout << "¡Gracias por jugar!\n";
+                setColor(7);
+
+                int opcionPostGame = 0;
+                do {
+                    cout << "\n¿Qué deseas hacer ahora?\n";
+                    cout << "1. Ver Pokedex\n";
+                    cout << "2. Ver Mochila\n";
+                    cout << "3. Volver al Menú Principal\n";
+                    cout << "Elige opción: ";
+                    cin >> opcionPostGame;
+                    switch(opcionPostGame) {
+                        case 1: pokedexMenu(); break;
+                        case 2: mochilaMenu(); break;
+                        case 3: cout << "Regresando al menú principal...\n"; Sleep(1000); postGame = false; break;
+                        default: cout << "Opción no válida.\n";
+                    }
+                } while(opcionPostGame != 3);
+                system("cls");
+                continue;
+            }
+        }
+        else if (op == 2)
+        { // Cargar partida
+            if (cargarPartida())
+            {
+                if (cargarPartida())
+                {
+                    if (enVolcan)
+                    {
+                        mapaVolcan();
+                    }
+                    else
+                    {
+                        mapaCiudad();
+                    }
+                }
+                setColor(10); cout << "¡Partida cargada!\n"; setColor(7);
+                pausa();
+                // Si la partida cargada ya venció a Tlaloc pero no Quetzal, hacer batalla Quetzal primero.
+                if (vencioTlaloc && !pokedex[5].atrapado) {
+                    int resultadoQuetzal = encuentroQuetzal();
+                    if (resultadoQuetzal == 1) {
+                        // Postgame menu
+                        bool postGame = true;
+                        while (postGame) {
+                            setColor(10);
+                            cout << "\n¡Felicidades! Terminaste la beta de Izalco Adventures.\n";
+                            cout << "¡Gracias por jugar!\n";
+                            setColor(7);
+
+                            int opcionPostGame = 0;
+                            do {
+                                cout << "\n¿Qué deseas hacer ahora?\n";
+                                cout << "1. Ver Pokedex\n";
+                                cout << "2. Ver Mochila\n";
+                                cout << "3. Volver al Menú Principal\n";
+                                cout << "Elige opción: ";
+                                cin >> opcionPostGame;
+                                switch(opcionPostGame) {
+                                    case 1: pokedexMenu(); break;
+                                    case 2: mochilaMenu(); break;
+                                    case 3: cout << "Regresando al menú principal...\n"; Sleep(1000); postGame = false; break;
+                                    default: cout << "Opción no válida.\n";
+                                }
+                            } while(opcionPostGame != 3);
+                            system("cls");
+                        }
+                        continue;
+                    }
+                }
+                while (!vencioTlaloc && !salirAlMenu) {
+                    mapaCiudad();
+                    if (salirAlMenu) break;
+                }
+                if (salirAlMenu) continue;
+
+                // Si venció a Tlaloc y atrapó a Quetzal (o tras el evento), menú postgame
+                if (vencioTlaloc && pokedex[5].atrapado) {
+                    bool postGame = true;
+                    while (postGame) {
+                        setColor(10);
+                        cout << "\n¡Felicidades! Terminaste la beta de Izalco Adventures.\n";
+                        cout << "¡Gracias por jugar!\n";
+                        setColor(7);
+
+                        int opcionPostGame = 0;
+                        do {
+                            cout << "\n¿Qué deseas hacer ahora?\n";
+                            cout << "1. Ver Pokedex\n";
+                            cout << "2. Ver Mochila\n";
+                            cout << "3. Volver al Menú Principal\n";
+                            cout << "Elige opción: ";
+                            cin >> opcionPostGame;
+                            switch(opcionPostGame) {
+                                case 1: pokedexMenu(); break;
+                                case 2: mochilaMenu(); break;
+                                case 3: cout << "Regresando al menú principal...\n"; Sleep(1000); postGame = false; break;
+                                default: cout << "Opción no válida.\n";
+                            }
+                        } while(opcionPostGame != 3);
+                        system("cls");
+                    }
+                }
+            }
+            else
+            {
+                cout << "No hay partida guardada. Inicia una nueva.\n";
+                pausa();
+                continue;
+            }
+        }
+        else if (op == 3) { // Salir
+            cout << "¡Hasta pronto!\n";
+            salir = true;
+        }
+    }
+}
