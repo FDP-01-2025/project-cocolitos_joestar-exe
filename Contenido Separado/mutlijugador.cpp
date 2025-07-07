@@ -78,7 +78,9 @@ void mostrarArte(const string& nombre, bool perspectiva) {
            -=---=====-==============-
 )";
 } else {
-            cout << R"(@@@@@@                    
+            cout << R"(
+            
+            @@@@@@                    
       @@@@@%@@@##*%                  
             -+%%+%                 
            @@#++%                
@@ -119,7 +121,8 @@ void mostrarArte(const string& nombre, bool perspectiva) {
             @@@                @@@
 )";
 } else {
-            cout << R"(%*=---:::.:. . .                  
+            cout << R"(
+                %*=---:::.:. . .                  
               --====..::#=:...::               
             :=++==*#=::-:. ...-- +               
    .:::...:+=++*-:::...                    
@@ -128,8 +131,6 @@ void mostrarArte(const string& nombre, bool perspectiva) {
 =+==++++++#+=+===++++++                        
 =++++++++++++++++======+                         
 ++++=++=+                          
-***********###+=##*=+                          
-##########*#%%#    ***
 )";
         }
     }
@@ -234,5 +235,5 @@ int main() {
     else
         cout << jugador1.nombre << " ha ganado la batalla.\n";
 
-    return 0;
+return 0;
 }
