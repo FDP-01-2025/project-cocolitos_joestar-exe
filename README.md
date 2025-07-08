@@ -3,11 +3,46 @@
 
 ## DESCRIPCION DEL JUEGO:
 
-**IZALCO ADVENTURES** es un minijuego hecho en consola, creado en lenguaje C++, que fusiona el folclore salvadoreño con mecánicas clásicas de los juegos de rol rpg. Hemos decidido recrear un pequeño juego con el estilo del juego Pokémon cambiando el estilo visual del juego por el uso de descripciones salvadoreñas con el objetivo de mirar el juego mediante otra perspectiva siguiendo el ritmo de las batallas rpg del juego original. 
+**IZALCO ADVENTURES** es un juego tipo RPG desarrollado en **C++** para consola, que combina la esencia de los clásicos juegos como Pokémon con elementos únicos de la cultura salvadoreña.
+En este juego, tomas el papel de ser una pupusa viviente que debe escalar el gran Volcán de Izalco para combatir contra criaturas míticas como El Cipitío y Al Dragon Tlaloc. Con su estilo divertido y lleno de referencias a la cultural salvadoreña, el juego retoma las mecánicas tradicionales de los juegos RPG con su estilo clásico, un toque único y autentico
 
-## CONCEPTO DEL JUEGO:
-El jugador encarna a una pupusa viviente en la que debe escalar el Volcán de Izalco para enfrentarse a una criatura mítica: el Cipitío, acompañado de su guardián (en este caso su Pokémon), el Dragón Tlaloc.
-Se pretende que el juego este caracterizado de humor y referencias culturales, desde los personajes hasta los objetos de curación como la Salva Cola, los Choripanes y la Kolashanpan. Esto simplemente para cambiar el estilo grafico del juego y crear un estilo un poco más original aunque sea en consola.
+## Concepto y Estilo
+
+El juego está diseñado para ofrecer una experiencia nostálgica de los RPG por turnos, pero con un giro salvadoreño:
+
+**Personajes inspirados en la cultura local:**
+- Tu personaje es una pupusa con vida.
+- Tus aliados son criaturas como el Torogoz, el Garrobo y el Cadejo animales que se ven en las calles de El Salvador.
+- El jefe final es el legendario Dragón Tlaloc, acompañado del Cipitío.
+
+**Objetos y referencias auténticas:**
+- Pociones como Salva Cola y Sopa Gallina India.
+- Mejoras como Choripanes (aumentan defensa) y Kolashanpan (aumentan ataque).
+- NPCs con diálogos bien divertidos y frases típicas.
+
+**Combates estratégicos**
+- Sistema de batallas por turnos.
+- Ataques especiales basados en criaturas salvadoreñas.
+- Captura de Cuscamones (versión local de los Pokémon).
+
+## **Mecánica Principal**
+
+Sistema de **RPG por turnos** con:
+- Captura de "Cuscamones" (versión local de Pokémon)
+- Combates estratégicos con ataques especiales
+- Inventario de objetos inspirados en la cultura salvadoreña
+
+## **jugabilidad**
+
+1. **Exploración**:
+    - Mapa de pueblo y volcán con movimiento WASD
+    - Diálogos con NPCs que usan jerga local
+2. **Combate**:
+    - Sistema de turnos al estilo Pokémon
+    - 3 Cuscamones iniciales (Torogoz, Garrobo, Cangrejo)
+3. **Progresión**:
+    - Derrotar al Dragón Tlaloc en la cima del volcán
+  
 
 ## Equipo
 
