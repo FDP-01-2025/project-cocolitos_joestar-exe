@@ -42,6 +42,17 @@ Sistema de **RPG por turnos** con:
     - 3 Cuscamones iniciales (Torogoz, Garrobo, Cangrejo)
 3. **Progresión**:
     - Derrotar al Dragón Tlaloc en la cima del volcán
+  
+## **Instalación y Ejecución**
+
+1. **Requisitos**:
+    - Compilador de C++ (g++, MinGW, Visual Studio).
+    - Sistema Windows (por el uso de `<windows.h>`).
+2. **Pasos para ejecutar:**
+   ```
+g++ .\main.cpp .\src\*.cpp -o startGame
+
+```
 
 ## **Aplicación de Temas Vistos**
 
@@ -94,7 +105,66 @@ int danio = rand() % 20 + 10;  // Daño entre 10-29
 ```
 Uso: Cálculo de daño en ataques.
 
-## Equipo
+## ** Consideraciones Técnicas**
+
+- **Plataforma**: Consola de Windows (CMD)
+- **Dependencias**:
+    - `<windows.h>` para colores (azul, verde, rojo)
+    - `<conio.h>` para leer teclas sin presionar Enter
+- **Limitaciones**:
+    - No compatible con Linux/macOS (por dependencias de Windows)
+    - Gráficos ASCII básicos
+
+---
+
+## ** Imágenes del Juego**
+
+### **Pantalla de Inicio**
+
+```
+      _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _     
+ (_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_) 
+ (_)                                                                      (_)
+ (_)  ___ _____   _    _      ____ ___                                    (_)
+ (_) |_ _|__  /  / |   | |   / ___/ _  |                                  (_)
+ (_)  | |  / /  / _ |  | |  | |  | | | |                                  (_)
+ (_)  | | / /_ / ___ | |__| |__| |_| |                                    (_)
+ (_) |___/____/_/___| || ___| ____|___/ _____ _   _ ____  _____ ____      (_)
+ (_)    / /   |  _ / /   /  / ____| |  ||_   _| | | |  _ /| ____/ __|     (_)
+ (_)   / _ /  | | | / / / / |  _| |  | |  | | | | | | | |_) |  _| | __    (_)
+ (_)  / ___ / | |_| |/ V /  | |___| ||  | | | | |_| |  _ <| |___ ___)     (_)
+ (_) /_/   /_/____/ |   /_/ |_____|_| | | |_|  |___/|_| | ______|____/    (_)
+ (_) _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _  _     (_)
+ (_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_)(_) 
+
+          Bienvenido a Izalco Adventures
+  1. Nueva partida
+  2. Cargar partida
+  3. Salir
+
+```
+
+### **Mapa del laboratorio**
+
+```
+void mapaLaboratorio() {
+    const int filas = 10;
+    const int columnas = 20;
+    char lab[filas][columnas] = {
+        {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
+        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'D', '#'},
+        {'#', ' ', '=', '=', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '=', '=', ' ', '#'},
+        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+        {'#', ' ', '=', '=', ' ', ' ', 'A', ' ', ' ', ' ', 'O', ' ', ' ', ' ', ' ', ' ', '=', '=', ' ', '#'},
+        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+        {'#', ' ', '=', '=', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '=', '=', ' ', '#'},
+        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+        {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+        {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'}
+    };
+```
+
+# Equipo
 
 - **Nombre del equipo:** [Cocolitos_Joestar.exe]
 
@@ -108,11 +178,3 @@ Uso: Cálculo de daño en ataques.
 
 3. **Nombre completo:** [Andres Enrique Lima Perez]  
    **Carnet:** [00184825]
-
-(Agregar más integrantes si es necesario)
-
-## Instrucciones de Ejecución
-
-1. Clona este repositorio en tu máquina local:
-   ```bash
-   git clone [URL del repositorio]
