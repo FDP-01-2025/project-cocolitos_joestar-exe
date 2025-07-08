@@ -189,7 +189,7 @@ void batalla(int idEnemigo, bool esSalvaje, bool legendario) {
     pausa();
 }
 
-// ====== MENÚ MOCHILA EN BATALLA (Ahora sí funciona bien) ======
+// ====== MENÚ MOCHILA EN BATALLA ======
 void mochilaMenuBatalla(int & pokeActual) {
     while (true) {
         system("cls");

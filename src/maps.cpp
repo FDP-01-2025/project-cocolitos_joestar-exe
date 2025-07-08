@@ -96,7 +96,7 @@ void mapaLaboratorio() {
             cout << "\nHabla primero con el Profesor Mondongo (A).\n"; Sleep(1000);
         }
 
-        // Puerta de salida solo si ya elegiste starter
+        // Puerta de salida solo si ya se selecciono un starter
         if (lab[py][px] == 'D') {
             if (starterYaEscogido) {
                 cout << "\n¡Felicidades! Has completado el laboratorio. Tu aventura comienza ahora...\n";
@@ -222,12 +222,12 @@ void mapaCiudad() {
 
 // ================== MAPA VOLCÁN NUEVO ==================
 void mapaVolcan() {
-    // === MAPA DE TU COMPAÑERA ===
+  
     const int altura = 15;
     const int ancho = 2 * altura + 1;
     char mapa[altura][ancho];
 
-    // Inicializar el mapa visual bonito
+    // Inicializar el mapa visual 
     for (int i = 0; i < altura; i++) {
         for (int j = 0; j < ancho; j++) {
             if (j == altura - i || j == altura + i)
