@@ -53,8 +53,7 @@ Sistema de **RPG por turnos** con:
     bash
     
     ```
-    g++ main.cpp -o IZALCO_ADVENTURES
-    ./IZALCO_ADVENTURES
+    g++ .\main.cpp .\src\*.cpp -o startGAME
     ```
     
 
