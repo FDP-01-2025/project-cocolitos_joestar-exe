@@ -48,11 +48,15 @@ Sistema de **RPG por turnos** con:
 1. **Requisitos**:
     - Compilador de C++ (g++, MinGW, Visual Studio).
     - Sistema Windows (por el uso de `<windows.h>`).
-2. **Pasos para ejecutar:**
-   ```
-g++ .\main.cpp .\src\*.cpp -o startGame
-
-```
+2. **Pasos para ejecutar**
+    
+    bash
+    
+    ```
+    g++ main.cpp -o IZALCO_ADVENTURES
+    ./IZALCO_ADVENTURES
+    ```
+    
 
 ## **Aplicación de Temas Vistos**
 
