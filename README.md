@@ -42,7 +42,57 @@ Sistema de **RPG por turnos** con:
     - 3 Cuscamones iniciales (Torogoz, Garrobo, Cangrejo)
 3. **Progresión**:
     - Derrotar al Dragón Tlaloc en la cima del volcán
-  
+
+## **Aplicación de Temas Vistos**
+
+### **1. Estructuras de Datos**
+
+```cpp
+struct Cuscamon {
+    string nombre;  // "Torogoz"
+    int vida;       // 100 HP
+    string tipo;    // "Volador"
+};
+
+```
+Uso: Almacenar atributos de cada criatura.
+
+### **2. Archivos**
+
+```cpp
+ofstream archivo("save.txt");
+archivo << jugador.nombre;  // Guarda "Pupusa de Queso"
+
+```
+Uso: Sistema de guardado de partidas.
+
+### **3. POO Básica**
+
+```cpp
+class Batalla {
+public:
+    void iniciar();  // Gestiona turnos
+};
+
+```
+Uso: Controlar flujo de combates.
+
+### **4. Manejo de Strings**
+
+```cpp
+string mensaje = "¡" + nombrePupusa + " usó Choripán!";
+// Ejemplo: "¡Pupusa de Queso usó Choripán!"
+
+```
+Uso: Diálogos dinámicos.
+
+### **5. Aleatoriedad**
+
+```cpp
+int danio = rand() % 20 + 10;  // Daño entre 10-29
+
+```
+Uso: Cálculo de daño en ataques.
 
 ## Equipo
 
