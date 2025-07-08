@@ -50,8 +50,6 @@ Sistema de **RPG por turnos** con:
     - Sistema Windows (por el uso de `<windows.h>`).
 2. **Pasos para ejecutar**
     
-    bash
-    
     ```
     g++ .\main.cpp .\src\*.cpp -o startGAME
     ```
