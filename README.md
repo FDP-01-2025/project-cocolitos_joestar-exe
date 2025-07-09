@@ -51,7 +51,7 @@ Sistema de **RPG por turnos** con:
 2. **Pasos para ejecutar**
     
     ```
-    g++ .\main.cpp .\src\*.cpp -o startGAME
+    g++ .\main.cpp .\globals.cpp  .\src\*.cpp -o startGAME
     ```
     
 
